@@ -21,16 +21,13 @@
 ![Screenshot 2024-08-28 150255](https://github.com/user-attachments/assets/c7d3db08-8f00-4678-aab4-83fd5e23ba70)
 ![Screenshot 2024-08-28 150344](https://github.com/user-attachments/assets/c8a79df4-5252-4afe-89c8-e9a04fc85cd7)
 
-5. Cloud watch alarm created for both webapp and db instances:
 
-![Screenshot 2024-08-28 114540](https://github.com/user-attachments/assets/789bf30f-8970-45f8-a2e1-9391859ff97e)
-
-6. When the cpu reaches 80% cloudwatch alarm state changed to in alarm
+5. When the cpu reaches 80% cloudwatch alarm state changed to in alarm
 
 ![Screenshot 2024-08-28 151753](https://github.com/user-attachments/assets/42b93ba9-8d49-434a-8a76-03b1b4817ce9)
 ![Screenshot 2024-08-28 151655](https://github.com/user-attachments/assets/5444b9da-5c58-48b6-a11b-7e66a59b8c8c)
 
-7. Email triggered when cpu reaches 80%
+6. Email triggered when cpu reaches 80%
 
 ![Screenshot 2024-08-28 151725](https://github.com/user-attachments/assets/9c01c973-ecdc-4b73-af4e-154c8095da25)
 
