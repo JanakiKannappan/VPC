@@ -8,49 +8,25 @@ resource "aws_vpc" "vpc_aura" {
   }
 }
 
-#subnet
-resource "aws_subnet" "publicsubnet1" {
+#subnets
+resource "aws_subnet" "publicsubnet" {
+  count = length(var.cidr_pub_subnet)
   vpc_id     = aws_vpc.vpc_aura.id
-  cidr_block = "10.0.1.0/24"
-
+  cidr_block = element(var.cidr_pub_subnet, count.index)
+  availability_zone = element(var.availability, count.index)
+  map_public_ip_on_launch = true
   tags = {
-    Name = "pub_sub1"
+    Name = "pub_sub ${count.index+1}"
   }
 }
 
-resource "aws_subnet" "publicsubnet2" {
+resource "aws_subnet" "privatesubnet" {
+   count = length(var.cidr_pri_subnet)
   vpc_id     = aws_vpc.vpc_aura.id
-  cidr_block = "10.0.2.0/24"
-
+  cidr_block = element(var.cidr_pri_subnet, count.index)
+  availability_zone = element(var.availability, count.index)
   tags = {
-    Name = "pub_sub2"
-  }
-}
-
-resource "aws_subnet" "privatesubnet1" {
-  vpc_id     = aws_vpc.vpc_aura.id
-  cidr_block = "10.0.3.0/24"
-
-  tags = {
-    Name = "pri_sub1"
-  }
-}
-
-resource "aws_subnet" "privatesubnet2" {
-  vpc_id     = aws_vpc.vpc_aura.id
-  cidr_block = "10.0.4.0/24"
-
-  tags = {
-    Name = "pri_sub2"
-  }
-}
-
-resource "aws_subnet" "privatesubnet3" {
-  vpc_id     = aws_vpc.vpc_aura.id
-  cidr_block = "10.0.5.0/24"
-
-  tags = {
-    Name = "pri_sub3"
+    Name = "pri_sub ${count.index+1}"
   }
 }
 
@@ -77,14 +53,9 @@ resource "aws_route_table" "Routetable" {
 
 }
 
-resource "aws_route_table_association" "RTassociation1" {
-  subnet_id      = aws_subnet.publicsubnet1.id
-  route_table_id = aws_route_table.Routetable.id
-}
-
-
-resource "aws_route_table_association" "RTassociation2" {
-  subnet_id      = aws_subnet.publicsubnet2.id
+resource "aws_route_table_association" "RTassociation_pub" {
+  count = length(var.cidr_pub_subnet)
+  subnet_id      = element(aws_subnet.publicsubnet[*].id, count.index)
   route_table_id = aws_route_table.Routetable.id
 }
 
@@ -97,10 +68,10 @@ resource "aws_eip" "nat" {
 }
 }
 
-#nat gw
+#nat gateway
 resource "aws_nat_gateway" "nat_gateway" {
   allocation_id = aws_eip.nat.id
-  subnet_id     = aws_subnet.publicsubnet1.id
+  subnet_id     = element(aws_subnet.publicsubnet[*].id, 1)
 
   tags = {
     Name = "gw NAT"
@@ -120,18 +91,9 @@ resource "aws_route_table" "private_rt" {
   }
 }
 
-resource "aws_route_table_association" "RTassociation3" {
-  subnet_id      = aws_subnet.privatesubnet1.id
-  route_table_id = aws_route_table.private_rt.id
-}
-
-resource "aws_route_table_association" "RTassociation4" {
-  subnet_id      = aws_subnet.privatesubnet2.id
-  route_table_id = aws_route_table.private_rt.id
-}
-
-resource "aws_route_table_association" "RTassociation5" {
-  subnet_id      = aws_subnet.privatesubnet3.id
+resource "aws_route_table_association" "RTassociation_pri" {
+  count = length(var.cidr_pri_subnet)
+  subnet_id      = element(aws_subnet.privatesubnet[*].id, count.index)
   route_table_id = aws_route_table.private_rt.id
 }
 
