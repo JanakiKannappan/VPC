@@ -119,10 +119,56 @@ and then create cname record in route 53
 10. SSL Configuration: If our Load Balancer is serving traffic over HTTPS, ensure that it has an SSL certificate that includes the aura.infosys.com subdomain.
 
 
+# AURA-67
+
+### Route 53 setup redirect from customers domain to load balancer
+
+#### Step:1
+
+1. Create a Hosted Zone in Route53.
+
+2. In the Domain name field, enter customer's subdomain(eg, aura.infosys.com).
+
+3. Click Create hosted zone.
+
+4. A new hosted is created for subdomain, and the Route53 will generate a set of NS records for subdomain.
+
+![image](https://github.com/user-attachments/assets/6031bd36-eec4-4f17-ab8c-5d3092a87309)
 
 
 
+#### Step:2
 
+1. Share the NS Records with Customer.
+
+2. Example NS Records:
+```
+ns-1163.awsdns-17.org.
+ns-381.awsdns-47.com.
+ns-1832.awsdns-37.co.uk.
+ns-841.awsdns-41.net.
+
+```
+
+![image](https://github.com/user-attachments/assets/b5a429e7-a5b2-41bc-acc2-a5dc6e288315)
+
+#### Step:3
+
+1. Share these NS records with the customer to add/update an NS record for the subdomain (aura.infosys.com) in their DNS settings.
+
+#### Step:4 
+
+1. In the Route 53 console, navigate to the hosted zone created for the subdomain.
+
+2. Click Create record.
+
+3. For Record type, select A record.
+
+![image](https://github.com/user-attachments/assets/84b300b8-a834-455c-8950-a46c823ecd48)
+
+4. Select Alias, choose the Load balancer's DNS name from the list.
+
+5. Click Create records.
 
 
 
