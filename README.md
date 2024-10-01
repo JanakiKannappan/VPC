@@ -93,6 +93,30 @@ and then create cname record in route 53
 13. It redirect to another region
 ![image (2)](https://github.com/user-attachments/assets/9ac0aace-16f3-4359-bd46-d3126d4f4e96)
 
+# AURA-67
+
+### Route 53 setup redirect from customers domain to load balancer
+
+1. The customer must have access to their AWS account.
+
+2. Route 53 Hosted Zone: Ensure that a hosted zone for the customer's domain (e.g., infosys.com) exists.
+   
+3. Select the hosted zone for the customer's domain (e.g., infosys.com).
+
+4. Create a CNAME Record for the Subdomain:
+
+5. Click on the Create record button.
+     
+6. In the Record name field, enter aura (this will create the subdomain aura.infosys.com).
+
+7. In the Record type, select CNAME.
+
+8. In the Value field, enter the DNS name of our Load Balancer (e.g.,aura-web-alb-12580921.ap-south-1.elb.amazonaws.com).
+![image](https://github.com/user-attachments/assets/b5dc1090-1186-42d5-ba6e-0ec3fcacfbbf)
+
+9. Click the Create records button to save the configuration.
+
+10. SSL Configuration: If our Load Balancer is serving traffic over HTTPS, ensure that it has an SSL certificate that includes the aura.infosys.com subdomain.
 
 
 
