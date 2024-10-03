@@ -154,7 +154,21 @@ ns-841.awsdns-41.net.
 
 #### Step:3
 
-1. Share these NS records with the customer to add/update an NS record for the subdomain (aura.infosys.com) in their DNS settings.
+Share these NS records with the customer to add/update an NS record for the subdomain (aura.infosys.com) in their DNS settings.
+
+##### Customer Steps for Updating DNS to Delegate Subdomain
+
+1. Log in to Domain Registrar,
+
+2. Locate DNS Management Section.
+
+3. Add a New Record for the Subdomain
+
+4. Select Record Type: Choose CNAME (if pointing to another domain name). Enter Subdomain Name.
+
+5. Enter Target/Value:  Enter Load Balancer (e.g.,aura-web-alb-12580921.ap-south-1.elb.amazonaws.com).
+
+6.  Save changes
 
 #### Step:4 
 
@@ -170,8 +184,33 @@ ns-841.awsdns-41.net.
 
 5. Click Create records.
 
+# AURA-67
 
+### Create setup to integrate with custom domains with our load balancer
 
+#### Step:1
+
+1. In Route 53, Click create hosted zone.
+
+2. In the Domain name field, enter the custom domain (e.g., customdomain.com)
+
+3. Set the Type to Public hosted zone.
+
+4. Click on the Create hosted zone button.
+
+#### Step:2
+
+For Unique Domains,
+
+1. In the record name field, leave it blank.
+
+2. In the Record type, choose A and Select the Load balancer.
+
+3. Click create record.
+
+#### Step:3
+
+1. Allow some time for DNS propagation (usually a few minutes to 48 hours).
 
 
 
