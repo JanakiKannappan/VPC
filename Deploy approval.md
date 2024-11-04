@@ -14,7 +14,8 @@ Created SNS topic to notify Email
 
 ### Step-3
 1. Subscribtion Email received
-![image](https://github.com/user-attachments/assets/dddd04f5-6d83-429a-9b3d-4ea6abffdcec)
+![image](https://github.com/user-attachments/assets/5b096502-9e30-4ecc-8fd5-fb603f337efc)
+
 
 2. When we release the changes made to the pipeline. The manual approval is sent to our email. 
 ![Screenshot 2024-11-04 153340](https://github.com/user-attachments/assets/650b436f-9e60-418a-85bd-e7c1dda0fe4a)
@@ -23,4 +24,7 @@ Created SNS topic to notify Email
 
 ![Screenshot 2024-11-04 153359](https://github.com/user-attachments/assets/868387de-9894-4379-b055-815cedf73963)
 
-![Screenshot 2024-11-04 153427](https://github.com/user-attachments/assets/c6ef9264-cc8d-4ef0-9d76-ebdd7c241b47)
+![image](https://github.com/user-attachments/assets/78ff432a-53e4-46cc-88cc-14eb072ec1fc)
+
+
+
