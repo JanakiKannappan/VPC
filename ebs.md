@@ -17,5 +17,6 @@
 
 4. Below is the Notification on slack when Lambda was triggered.
 
- ![Screenshot 2024-10-28 185437](https://github.com/user-attachments/assets/c7b46b3c-a8ca-4399-951f-b135f68cffbe)
+![image](https://github.com/user-attachments/assets/5ccb98df-bfff-4e0c-ac0c-59bc18ba34ac)
+
 
